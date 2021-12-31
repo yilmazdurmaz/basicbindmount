@@ -1,0 +1,18 @@
+# remove and rebuild
+docker container rm -f basicbindmount
+docker image rm -f basicbindmount
+docker build -t basicbindmount .
+
+# create host fodler to bind for uploads
+
+# open shell in container
+docker run -it --name basicbindmount -v $(pwd)\uploads:/uploads basicbindmount sh
+#docker run -it --name basicbindmount -v %CD%\uploads:/uploads basicbindmount sh
+
+#run these inside container
+python main.py
+ls /uploads
+
+# remove this test
+docker container rm -f basicbindmount
+docker image rm -f basicbindmount
